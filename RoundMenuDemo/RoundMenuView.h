@@ -12,7 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @protocol RoundMenuViewDelgegate
 -(void)clickedButtonAtIndex:(NSInteger)index withTitle:(NSString *)title;
-
+-(void)longPressButtonAtIndex:(NSInteger)index withTitle:(NSString *)title;
 @end
 
 @interface RoundMenuView : UIView

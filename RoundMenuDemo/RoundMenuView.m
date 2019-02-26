@@ -52,6 +52,9 @@
     UIButton *btn = [[UIButton alloc]init];
     [btn setImage:image forState:UIControlStateNormal];
     [btn addTarget:self action:@selector(buttonsClicked:) forControlEvents:UIControlEventTouchUpInside];
+    UILongPressGestureRecognizer *longPress = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(btnLong:)];
+    longPress.minimumPressDuration = 0.5; //定义按的时间
+    [btn addGestureRecognizer:longPress];
     UILabel * lab = [[UILabel alloc]init];
     lab.text = title;
     [lab setTextColor:[UIColor whiteColor]];
@@ -100,6 +103,18 @@
     }
     [self.delegate clickedButtonAtIndex:sender.tag withTitle:title];
     [self dismiss];
+}
+
+-(void)btnLong:(UILongPressGestureRecognizer *)gestureRecognizer{
+    if ([gestureRecognizer state] == UIGestureRecognizerStateBegan) {
+        NSString *title = @"";
+        if(_labArray[gestureRecognizer.view.tag] != nil){
+            UILabel *lab = (UILabel *)_labArray[gestureRecognizer.view.tag];
+            title = lab.text;
+        }
+        [self.delegate longPressButtonAtIndex:gestureRecognizer.view.tag withTitle:title];
+        [self dismiss];
+    }
 }
 
 #pragma mark -

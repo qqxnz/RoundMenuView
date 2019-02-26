@@ -49,7 +49,10 @@
 }
 
 - (void)clickedButtonAtIndex:(NSInteger)index withTitle:(NSString *)title{
-        NSLog(@"%ld   %@",index,title);
+        NSLog(@"点击%ld   %@",index,title);
+}
+- (void)longPressButtonAtIndex:(NSInteger)index withTitle:(NSString *)title{
+        NSLog(@"长按%ld   %@",index,title);
 }
 
 @end

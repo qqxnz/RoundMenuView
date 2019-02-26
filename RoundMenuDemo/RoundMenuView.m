@@ -28,7 +28,7 @@
     self = [super initWithFrame:frame];
     if (self) {
         offsetAngle = 180.0;
-        angle = 22.5;///放五个按钮为90度/4=22.5度(第一个放到0所以不算。。。呜呜呜)
+        angle = 30.0;///放五个按钮为90度/4=22.5度(第一个放到0所以不算。。。呜呜呜) 后改为4个按钮
         font = [UIFont fontWithName:@"PingFangSC-Regular" size: 14];
         self.backgroundColor = [UIColor colorWithRed:0/255.0 green:0/255.0 blue:0/255.0 alpha:0.0];
         _centerBtn = [[UIButton alloc]init];
@@ -36,8 +36,16 @@
         [self addSubview:_centerBtn];
         _btnArray = [[NSMutableArray alloc]init];
         _labArray = [[NSMutableArray alloc]init];
+        
+        UITapGestureRecognizer *tapGesturRecognizer = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapAction:)];
+        [self addGestureRecognizer:tapGesturRecognizer];
+
     }
     return self;
+}
+
+-(void)tapAction:(id)tap{
+    [self dismiss];
 }
 
 -(void)setCenterBtnFrame:(CGRect)frame{
